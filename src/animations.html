@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment 3</title>
+    <link rel="stylesheet" href="css/main.scss">
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Moment 4</h1>
+        <!--button for open on hamburger menu-->
+        <button class="menu-open" id="open-menu">
+            <span class="icon">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </span>
+        </button>
+
+        <!--button for close on hamburger menu-->
+        <nav id="nav-menu">
+            <button class="menu-close" id="close-menu">
+                <span class="icon">
+                    <span clasS="bars cross1"></span>
+                    <span clasS="bars cross2"></span>
+                </span>
+            </button>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="sass.html">SASS</a></li>
+                <li><a href="animations.html">Animationer</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Bokning</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--container with animations-->
+    <main class="animation-container">
+        <div class="animation-text">
+            <h2 class="text-animation">Animationer</h2>
+            <p>Här lägger jag till scale så att texten börjar i orginalstorlek och sedan blir 2 gånger större
+                på bredd och 3 gånger större på höjd. Har även lagt på att den ändrar färg i röd grön och blå.
+            </p>
+        </div>
+
+        <div class="animation-btn">
+            <h3>Knappen flyttas med transform</h3>
+            <p>Tips! Testa hålla musen över knappen.</p>
+            <button class="move-button">Titta här!</button>
+        </div>
+
+        <div class="rotate">
+            <h3>Testa att hålla inne knappen</h3>
+            <button class="rotate-animation">Klicka här!</button>
+        </div>
+    </main>
+
+    <footer>
+        <h3>Hanna Angeria</h3>
+        <p>Email: haan2402@student.miun.se</p>
+    </footer>
+</body>
+</html>

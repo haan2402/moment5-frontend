@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment 3</title>
+    <link rel="stylesheet" href="css/main.scss">
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Tropic Travels</h1>
+        <!--button for open on hamburger menu-->
+        <button class="menu-open" id="open-menu">
+            <span class="icon">
+                <span class="bars"></span>
+                <span class="bars"></span>
+                <span class="bars"></span>
+            </span>
+        </button>
+
+        <!--button for close on hamburger menu-->
+        <nav id="nav-menu">
+            <button class="menu-close" id="close-menu">
+                <span class="icon">
+                    <span clasS="bars cross1"></span>
+                    <span clasS="bars cross2"></span>
+                </span>
+            </button>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="sass.html">SASS</a></li>
+                <li><a href="animations.html">Animationer</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Bokning</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--main container with text and pictures-->
+    <main clasS="main-container">
+        <section>
+        <h2>Hitta ditt nästa drömresemål!</h2>
+        <p>Drömmer du om palmer, kritvita stränder och klarblått vatten i vinter? Då har du kommit rätt!<br><br>
+            Vi hjälper dig att hitta den perfekta destinationen där ditt drömresemål blir till verklighet.
+        </p>
+        </section>
+
+        <div class="pic-container">
+            <picture>
+                <source srcset="images/pic1.jpg?as=webp&width=300" type="image/webp">
+                <img src="images/pic1.jpg?width=300" alt="strand i solnedgång i Mexico">
+            </picture>
+            <picture>
+                <source srcset="images/pic2.jpg?as=webp&width=300" type="image/webp">
+                <img src="images/pic2.jpg" alt="Strand med båtar i Mexico">
+            </picture>
+            <picture>
+                <source srcset="images/pic3.jpg?as=webp&width=300" type="image/webp">
+                <img src="images/pic3.jpg" alt="Berg som går ut i havet på Nusa Penida">
+            </picture>
+        </div>
+    </main>
+    <footer>
+        <h3>Kontakt</h3>
+        <p>Telefon: 010-000 00 00</p>
+        <p>Email: info@tropictravel.com</p>
+    </footer>
+</body>
+</html>

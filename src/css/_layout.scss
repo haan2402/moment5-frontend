@@ -1,0 +1,250 @@
+@use "base";
+
+/*styling the basics of page*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: base.$font-stack;
+    background-color: base.$primary-color;
+    color: base.$text-color;
+    font-size: base.$text-size;
+}
+
+/*media queries for dark theme*/
+@media (prefers-color-scheme: dark) {
+    body {
+    background-color: base.$dark-color;
+    color: base.$dark-text-color;
+    }
+
+    .main-container,
+    .sass-container {
+        background-color: base.$dark-container-color !important;
+    }
+
+    header,
+    footer {
+        background-color: base.$dark-header !important; 
+        color: base.$dark-text-color !important;
+    }
+
+    h1 {
+        color: base.$dark-text-color; 
+    }
+
+    nav {
+        background-color: base.$dark-header !important;
+
+        a {
+            color: base.$dark-text-color;
+        }
+    }
+}
+
+/*styling for main container, centering text and pictures*/
+.main-container {
+    background-color: base.$container-color;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px;
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+    }
+
+    h2 {
+        text-align: center;
+        padding: 10px;
+    }
+
+    p {
+        text-align: left;
+        max-width: 30em;
+        padding: 10px;
+        font-size: base.$text-size;
+    }
+}
+
+.pic-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+
+    img {
+        @include base.img(300px, 300px, 0 2px 6px rgba(0, 0, 0, 0.3 ), $border: true);
+    }
+}
+
+/*styling for sass container, center in middle of page*/
+.sass-container {
+    background-color: base.$container-color;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+    }
+
+    h2, h3 {
+        text-align: center;
+        padding: 10px;
+        font-size: base.$header-text;
+    }
+
+    p {
+        text-align: left;
+        max-width: 30em;
+        padding: 10px;
+        font-size: base.$text-size;
+    }
+}
+
+/*styling for animation container, center everything in middle of page*/
+.animation-container {
+    background-color: base.$container-color;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*added border around the div, when you hover the "box" you see shadow behind*/
+    .animation-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        border: black solid 2px;
+        width: 700px;
+        padding: 20px;
+        transition: box-shadow 0.5s ease-in-out;
+
+        &:hover {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5 );
+        }
+    }
+
+    h2 {
+        padding: 20px;
+    }
+
+    p {
+        padding: 20px;
+        max-width: 40em;
+    }
+
+    /*added border around the div, when you hover the "box" you see shadow behind, styling for button*/
+    .animation-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: black solid 2px;
+        margin: 20px auto;
+        width: 700px;
+        padding: 20px;
+
+        transition: box-shadow 0.5s ease-in-out;
+
+        &:hover {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5 );
+        }
+    }
+
+    h3 {
+        text-align: center;
+        padding: 10px;
+        font-size: base.$header-text;
+    }
+        
+    .move-button {
+        background-color: base.$header-color;
+        padding: 20px;
+        font-size: base.$text-size;
+        cursor: pointer;
+    }
+
+    /*added border around the div, when you hover the "box" you see shadow behind*/
+    .rotate {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: black solid 2px;
+        margin: 20px auto;
+        width: 700px;
+        padding: 20px;
+
+        transition: box-shadow 0.5s ease-in-out;
+
+        &:hover {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5 );
+        }
+    }
+
+    /*when you click button it will rotate 360deg*/
+    .rotate-animation {
+        background-color: blueviolet;
+        color: white;
+        padding: 20px;
+        font-size: base.$text-size;
+        cursor: pointer;
+        transition: all 0.6s ease-in;
+
+        &:active {
+            animation: rotateBtn 0.6s linear;
+        }
+    }
+}
+
+/*selector inheritance for header and footer, extend to use on both header and footer*/
+.header-footer-bg {
+    background-color: base.$header-color;
+    color: base.$text-color;
+    padding: 20px;
+}
+
+header {
+    @extend .header-footer-bg;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-size: base.$header-text;
+    }
+}
+
+footer {
+    @extend .header-footer-bg;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}

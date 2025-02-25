@@ -1,0 +1,29 @@
+/*variables for styling*/
+$primary-color: #f0d4e5;
+$header-color: #fda3cd;
+$container-color: #fff;
+$text-color: #000;
+
+$font-stack: Arial, sans-serif;
+$text-size: 1em;
+$nav-text: 1.2em;
+$header-text: 1.4em;
+
+/*for dark theme*/
+$dark-color: #2a344e;
+$dark-container-color: #4c5c83;
+$dark-header: #23293b;
+$dark-text-color: #fff;
+
+/*mixin for pictures, if and else on border on picture*/
+@mixin img($width:300px, $height:300px, $box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), $border: false) {
+    width: $width;
+    height: $height;
+    box-shadow: $box-shadow;
+
+    @if $border {
+        border-radius: 10%;
+    } else {
+        border-radius: 0;
+    }
+}

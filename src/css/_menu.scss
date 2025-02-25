@@ -1,0 +1,111 @@
+@use "base";
+
+/*styling for hamburger menu, open and close*/
+nav {
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: 0;
+    display: none;
+    position: fixed;
+    background-color: base.$header-color;
+    font-family: base.$font-stack;
+
+    ul {
+        list-style: none;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    li {
+        padding: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: base.$text-color;
+        font-size: base.$nav-text;
+    }
+
+    li:hover {
+        text-decoration: underline;
+    }
+}
+
+.menu-open {
+    display: flex;
+    align-items: center;
+    background-color: base.$header-color;
+    border: none;
+    padding: 10px 30px;
+}
+
+.bars {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: base.$text-color;
+    margin: 5px 10px;
+}
+
+.menu-close {
+    display: flex;
+    align-items: center;
+    background-color: base.$header-color;
+    color: base.$text-color;
+    padding: 10px 15px;
+    border: black solid 2px;
+}
+
+.cross1 {
+    width: 25px;
+    position: relative;
+    transform: rotate(45deg);
+    top: 5px;
+}
+
+.cross2 {
+    width: 25px;
+    position: relative;
+    transform: rotate(135deg);
+    top: -3px;
+}
+
+/*styling for menu on big screens*/
+@media (min-width: 768px) {
+    .menu-open {
+        display: none;
+    }
+
+    #open-menu {
+        display: none !important;
+    }
+
+    .menu-close {
+        display: none;
+    }
+
+    h1{
+        margin-left: 30px;
+    }
+
+    nav {
+        display: block;
+        width: auto;
+        height: auto;
+        position: static;
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline;
+            margin: 10px;
+        }
+    }  
+}
