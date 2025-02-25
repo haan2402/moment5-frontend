@@ -215,6 +215,24 @@ body {
     }
 }
 
+.diagram-container{
+    background-color: base.$container-color;
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+
+    #bar-chart {
+    width: 100%;
+    height: 500px;
+    }
+}
+
 /*selector inheritance for header and footer, extend to use on both header and footer*/
 .header-footer-bg {
     background-color: base.$header-color;
