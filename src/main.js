@@ -50,8 +50,11 @@ async function getCourses() {
 }
 
 /**
- * Skapar stapeldiagram med de 6 mest sökta programmen
- * @function
+ * Skapar stapeldiagram med de 6 mest sökta kurserna
+ * @function - hämtar datan och filtrerar, sorterar och med slice tar ut topp 6 kurserna
+ * @param {Object} data - data, tar ut array av kurserna, filtrerar ut endast kurserna, sorterar upp efter antal sökande och tar ut topp 6 mest sökta kurserna
+ * @param {string} - name, tar ut namnet på kursen
+ * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
  */
 function chartCourses(data) {
     const popularCourses = data 
@@ -72,7 +75,8 @@ function chartCourses(data) {
                 label: 'Antal sökande',
                 data: numberOfApplicants,
                 borderWidth: 1,
-                backgroundColor: ['Red','Blue','Yellow','Green','Orange','Purple']
+                backgroundColor: ['#BB8FCE','#F1948A','#85C1E9','#82E0AA','#F4D03F', '#F5B041'],
+                borderColor: 'Black'
             }]
         },
         options: {
@@ -80,6 +84,52 @@ function chartCourses(data) {
                 y: {
                     beginAtZero: true
                 }
+            },
+            layout: {
+                padding: 20
+            }
+        }
+    });
+}
+
+/**
+ * Skapar stapeldiagram med de 5 mest sökta programmen
+ * @function - hämtar datan och filtrerar, sorterar och med slice tar ut topp 5 programmen
+ * @param {Object} data - data, tar ut array av programmen, filtrerar ut endast programmen, sorterar upp efter antal sökande och tar ut topp 5 mest sökta programmen
+ * @param {string} - name, tar ut namnet på programmen
+ * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
+ */
+function chartPrograms(data) {
+    const popularPrograms = data 
+    .filter(item => item.type === "Program")
+    .sort((a, b) => parseInt(b.applicantsTotal) - parseInt(a.applicantsTotal))
+    .slice(0, 5);
+
+    const programName = popularPrograms.map(program => program.name);
+    const numberOfApplicant = popularPrograms.map(program => parseInt(program.applicantsTotal));
+   
+    const pieBar = document.getElementById('pie-chart');
+
+    new Chart(pieBar, {
+        type: 'pie',
+        data: {
+            labels: programName,
+            datasets: [{
+                label: 'Antal sökande',
+                data: numberOfApplicant,
+                borderWidth: 1,
+                backgroundColor: ['#BB8FCE','#F1948A','#85C1E9','#82E0AA','#F4D03F'],
+                borderColor: 'Black'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            layout: {
+                padding: 20
             }
         }
     });
