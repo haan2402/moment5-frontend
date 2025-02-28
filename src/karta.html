@@ -6,7 +6,12 @@
     <title>Moment 5</title>
     <link rel="stylesheet" href="css/main.scss">
     <script type="module" src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 </head>
 <body>
     <header>
@@ -38,6 +43,14 @@
         </nav>
     </header>
 
+    <main class="map-container">
+        <h2>Karta</h2>
+        <input type="text" id="search" placeholder="Sök efter plats...">
+        <button id="search-btn">Sök</button>
+
+    <div id="map">
+    </div>
+    </main>
 
     <footer>
         <h3>Hanna Angeria</h3>

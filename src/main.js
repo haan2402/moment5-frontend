@@ -134,3 +134,16 @@ function chartPrograms(data) {
         }
     });
 }
+
+/**
+ * Hämtar in data från Leafletjs API och lägger in karta
+ */
+const map = L.map('map').setView([66.0, 23.0], 14);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+const marker = L.marker([66.0, 23.0]).addTo(map);
+
