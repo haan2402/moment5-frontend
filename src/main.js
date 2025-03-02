@@ -137,9 +137,9 @@ function chartPrograms(data) {
 
 /**
  * Hämtar in data från Leafletjs API och lägger in karta
- * @map - lagt till Kalix koordinater där start markeringen på kartan är
- * @L - använt Leafletjs guide för att hämta in karta till min sida
- * @marker - lagt till markering för Kalix och adderar till kartan
+ * @param {map} - lagt till Kalix koordinater där start markeringen på kartan är
+ * @param {L} - använt Leafletjs guide för att hämta in karta till min sida
+ * @param {marker} - lagt till markering för Kalix och adderar till kartan
  */
 const map = L.map('map').setView([66.0, 23.0], 14);
 
