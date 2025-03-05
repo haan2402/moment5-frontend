@@ -40,7 +40,6 @@ async function getCourses() {
             throw new Error('Problem med nätverksanslutning')
         }
         const data = await response.json();
-        console.log(data);
         chartCourses(data);
         chartPrograms(data);
 
@@ -55,8 +54,12 @@ async function getCourses() {
  * @param {Object} data - data, tar ut array av kurserna, filtrerar ut endast kurserna, sorterar upp efter antal sökande och tar ut topp 6 mest sökta kurserna
  * @param {string} - name, tar ut namnet på kursen
  * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
+ * @return - kontrollerar att elementet, om inte slutar funktionen
  */
 function chartCourses(data) {
+    const chartsBar = document.getElementById('bar-chart');
+    if(!chartsBar) return;
+
     const popularCourses = data 
     .filter(item => item.type === "Kurs")
     .sort((a, b) => parseInt(b.applicantsTotal) - parseInt(a.applicantsTotal))
@@ -64,8 +67,6 @@ function chartCourses(data) {
 
     const courseName = popularCourses.map(course => course.name);
     const numberOfApplicants = popularCourses.map(course => parseInt(course.applicantsTotal));
-   
-    const chartsBar = document.getElementById('bar-chart');
 
     new Chart(chartsBar, {
         type: 'bar',
@@ -98,8 +99,12 @@ function chartCourses(data) {
  * @param {Object} data - data, tar ut array av programmen, filtrerar ut endast programmen, sorterar upp efter antal sökande och tar ut topp 5 mest sökta programmen
  * @param {string} - name, tar ut namnet på programmen
  * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
+ * @return - kontrollerar att elementet, om inte slutar funktionen
  */
 function chartPrograms(data) {
+    const pieBar = document.getElementById('pie-chart');
+    if (!pieBar) return;
+
     const popularPrograms = data 
     .filter(item => item.type === "Program")
     .sort((a, b) => parseInt(b.applicantsTotal) - parseInt(a.applicantsTotal))
@@ -107,8 +112,6 @@ function chartPrograms(data) {
 
     const programName = popularPrograms.map(program => program.name);
     const numberOfApplicant = popularPrograms.map(program => parseInt(program.applicantsTotal));
-   
-    const pieBar = document.getElementById('pie-chart');
 
     new Chart(pieBar, {
         type: 'pie',
@@ -157,6 +160,7 @@ const marker = L.marker([66.0, 23.0]).addTo(map);
  */
 function getCoordinates() {
     const searchResult = document.getElementById('search').value;
+    if (!searchResult) return;
 
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${(searchResult)}`;
 
@@ -171,12 +175,14 @@ function getCoordinates() {
                 L.marker([lat, lon]).addTo(map);;
             }
         })
-        .catch(error => (error));
+        .catch(error => console.error("Nätverksfel, kunde inte hämta plats", error));
 }
 
 /**
  * Eventlyssnare för att kunna använda sökknappen och få den nya platsen man sökt på
  */
-document.getElementById('search-btn').addEventListener("click", getCoordinates);
-
+const searchButton = document.getElementById('search-btn')
+    if(searchButton) {
+        searchButton.addEventListener("click", getCoordinates);
+    }
 
