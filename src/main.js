@@ -24,6 +24,7 @@ function toggleMenu() {
 
 /**
  * Hämta statistik på antagning från JSON-filen och konverterar den
+ * 
  * @async
  * @function getCourses hämtar data från API
  * @throws {Error} Om det är problem med nätverksanslutning
@@ -50,11 +51,10 @@ async function getCourses() {
 
 /**
  * Skapar stapeldiagram med de 6 mest sökta kurserna
- * @function - hämtar datan och filtrerar, sorterar och med slice tar ut topp 6 kurserna
- * @param {Object} data - data, tar ut array av kurserna, filtrerar ut endast kurserna, sorterar upp efter antal sökande och tar ut topp 6 mest sökta kurserna
- * @param {string} - name, tar ut namnet på kursen
- * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
- * @return - kontrollerar att elementet, om inte slutar funktionen
+ * 
+ * @param {Object[]} data data, tar ut array av kurserna, filtrerar ut endast kurserna, sorterar upp efter antal sökande och tar ut topp 6 mest sökta kurserna
+ * @param {string} data[].name
+ * @param {string} data[].applicantsTotal
  */
 function chartCourses(data) {
     const chartsBar = document.getElementById('bar-chart');
@@ -95,11 +95,10 @@ function chartCourses(data) {
 
 /**
  * Skapar stapeldiagram med de 5 mest sökta programmen
- * @function - hämtar datan och filtrerar, sorterar och med slice tar ut topp 5 programmen
- * @param {Object} data - data, tar ut array av programmen, filtrerar ut endast programmen, sorterar upp efter antal sökande och tar ut topp 5 mest sökta programmen
- * @param {string} - name, tar ut namnet på programmen
- * @param {string} - applicantstotal tar ut totalt sökande, summerar till heltal
- * @return - kontrollerar att elementet, om inte slutar funktionen
+ * 
+ * @param {Object[]} data data, tar ut array av programmen, filtrerar ut endast programmen, sorterar upp efter antal sökande och tar ut topp 5 mest sökta programmen
+ * @param {string} data[].name
+ * @param {string} data[].applicantsTotal
  */
 function chartPrograms(data) {
     const pieBar = document.getElementById('pie-chart');

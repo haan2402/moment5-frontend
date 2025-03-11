@@ -1,8 +1,6 @@
 /**
  * Hämtar in data från Leafletjs API och lägger in karta
- * @param {map} - lagt till Kalix koordinater där start markeringen på kartan är
- * @param {L} - använt Leafletjs guide för att hämta in karta till min sida
- * @param {marker} - lagt till markering för Kalix och adderar till kartan
+ * @constant {Object} map - lagt till Kalix koordinater där start markeringen på kartan är
  */
 const map = L.map('map').setView([66.0, 23.0], 14);
 
@@ -16,8 +14,9 @@ const marker = L.marker([66.0, 23.0]).addTo(map);
 
 /**
  * Gör funktion för att kunna söka efter plats och uppdatera kartan
- * @function - hämtar först in value från mitt input fält där man söker efter stad, sedan hämtar jag från nominatim API, konverterar til json, där jag lägger in Searchresults för att få in den sökta platsen
- * @fetch - för att hämta in data från json filen, och tar ut lattitud och longitud, använder setView och L.marker för att uppdatera plats
+ * 
+ * @param {string} searchResult den plats som man söker
+ * @returns {void} 
  */
 function getCoordinates() {
     const searchResult = document.getElementById('search').value;
@@ -33,7 +32,7 @@ function getCoordinates() {
                 const lon = data[0].lon;
 
                 map.setView([lat, lon], 14);
-                L.marker([lat, lon]).addTo(map);;
+                L.marker([lat, lon]).addTo(map);
             }
         })
         .catch(error => console.error("Nätverksfel, kunde inte hämta plats", error));
@@ -41,6 +40,7 @@ function getCoordinates() {
 
 /**
  * Eventlyssnare för att kunna använda sökknappen och få den nya platsen man sökt på
+ * @function searchButton
  */
 const searchButton = document.getElementById('search-btn')
     if(searchButton) {
